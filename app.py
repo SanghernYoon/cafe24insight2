@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import time
 import pandas as pd
 import base64
+import plotly.express as px
 
 # 페이지 설정
 st.set_page_config(
@@ -872,6 +873,226 @@ if submitted and domain:
             """, unsafe_allow_html=True)
         
         st.markdown("</table>", unsafe_allow_html=True)
+
+        # 성능 개선 효과 섹션 추가
+        st.markdown("### 🚀 성능 개선 효과")
+        st.markdown("""
+        <div style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+            <p style="color: #666; font-size: 0.9em; margin-bottom: 15px;">
+                * 현재 사이트와 아윤채몰의 성능 데이터를 비교한 결과입니다.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+
+        # 성능 비교 데이터
+        performance_comparison = [
+            {
+                "지표": "로딩 속도",
+                "현재 사이트": "65/100",
+                "아윤채몰": "85/100",
+                "개선율": "31%",
+                "설명": "페이지 로딩 속도 최적화 및 서버 응답 시간 개선"
+            },
+            {
+                "지표": "모바일 최적화",
+                "현재 사이트": "59/100",
+                "아윤채몰": "78/100",
+                "개선율": "32%",
+                "설명": "모바일 사용자 경험 및 반응형 디자인 최적화"
+            },
+            {
+                "지표": "SEO 점수",
+                "현재 사이트": "74/100",
+                "아윤채몰": "90/100",
+                "개선율": "22%",
+                "설명": "검색 엔진 최적화 및 메타데이터 개선"
+            },
+            {
+                "지표": "전환율",
+                "현재 사이트": "1.9%",
+                "아윤채몰": "2.7%",
+                "개선율": "42%",
+                "설명": "사용자 경험 개선으로 인한 구매 전환율 향상"
+            },
+            {
+                "지표": "월 운영 비용",
+                "현재 사이트": "₩26,720,000",
+                "아윤채몰": "₩8,500,000",
+                "개선율": "68%",
+                "설명": "운영 비용 최적화 및 효율적인 리소스 관리"
+            }
+        ]
+
+        # 성능 비교 테이블 생성
+        st.markdown("""
+        <table class="comparison-table">
+            <tr>
+                <th>성능 지표</th>
+                <th>현재 사이트</th>
+                <th>아윤채몰</th>
+                <th>개선율</th>
+                <th>설명</th>
+            </tr>
+        """, unsafe_allow_html=True)
+
+        for item in performance_comparison:
+            st.markdown(f"""
+            <tr>
+                <td><strong>{item['지표']}</strong></td>
+                <td>{item['현재 사이트']}</td>
+                <td>{item['아윤채몰']}</td>
+                <td style="color: #28a745;">{item['개선율']}</td>
+                <td>{item['설명']}</td>
+            </tr>
+            """, unsafe_allow_html=True)
+
+        st.markdown("</table>", unsafe_allow_html=True)
+
+        # 성능 개선 효과 시각화
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.markdown("#### 성능 점수 비교")
+            performance_data = {
+                '지표': ['현재 사이트', '아윤채몰'],
+                '점수': [65, 85]  # 로딩 속도 기준
+            }
+            fig = px.bar(performance_data, x='지표', y='점수', 
+                        color='지표',
+                        color_discrete_sequence=['#ff4444', '#00C851'],
+                        text='점수')
+            fig.update_layout(showlegend=False, height=300)
+            st.plotly_chart(fig, use_container_width=True)
+
+        with col2:
+            st.markdown("#### 개선율 분포")
+            improvement_data = {
+                '지표': ['로딩 속도', '모바일 최적화', 'SEO 점수', '전환율', '비용 절감'],
+                '개선율': [31, 32, 22, 42, 68]
+            }
+            fig = px.pie(improvement_data, values='개선율', names='지표',
+                        color_discrete_sequence=px.colors.qualitative.Set3)
+            fig.update_layout(showlegend=True, height=300)
+            st.plotly_chart(fig, use_container_width=True)
+
+        # 결론 및 제안 섹션
+        st.markdown("### 🎯 결론 및 제안")
+        
+        st.markdown("""
+        <div style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+            <h4 style="color: #2c3e50; margin-bottom: 15px;">분석 결과를 바탕으로 한 제안사항</h4>
+            <p style="color: #666; font-size: 0.9em; margin-bottom: 15px;">
+                본석 결과를 바탕으로 idfmall.co.kr의 온라인 비즈니스 성장을 위한 카페24 전환 제안입니다.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+
+        # 4개의 열로 주요 제안사항 표시
+        col1, col2, col3, col4 = st.columns(4)
+
+        with col1:
+            st.markdown("""
+            <div class="metric-card" style="background-color: #e3f2fd;">
+                <h4>비용 효율성</h4>
+                <p>월 운영 비용 68% 절감<br>연간 약 2.2억원 비용 감소 효과</p>
+            </div>
+            """, unsafe_allow_html=True)
+
+        with col2:
+            st.markdown("""
+            <div class="metric-card" style="background-color: #e8f5e9;">
+                <h4>성능 향상</h4>
+                <p>로딩 속도, 모바일 최적화, SEO 점수 등<br>전반적인 성능 30% 이상 개선</p>
+            </div>
+            """, unsafe_allow_html=True)
+
+        with col3:
+            st.markdown("""
+            <div class="metric-card" style="background-color: #fff3e0;">
+                <h4>매출 증대</h4>
+                <p>전환율 42% 향상<br>유지보수 간소화로 운영 효율성 증가</p>
+            </div>
+            """, unsafe_allow_html=True)
+
+        with col4:
+            st.markdown("""
+            <div class="metric-card" style="background-color: #f3e5f5;">
+                <h4>유지보수 간소화</h4>
+                <p>카페24의 통합 관리 시스템으로<br>운영 리소스 최적화</p>
+            </div>
+            """, unsafe_allow_html=True)
+
+        # 구체적인 실행 계획
+        st.markdown("#### 📋 구체적인 실행 계획")
+        
+        st.markdown("""
+        <div class="metric-card">
+            <h4>1단계: 초기 설정 (1-2주)</h4>
+            <ul>
+                <li>카페24 호스팅 신청 및 계정 설정</li>
+                <li>도메인 연결 및 SSL 인증서 설치</li>
+                <li>기존 데이터 이전 계획 수립</li>
+            </ul>
+        </div>
+        
+        <div class="metric-card">
+            <h4>2단계: 데이터 이전 (2-3주)</h4>
+            <ul>
+                <li>상품 데이터 이전</li>
+                <li>회원 정보 마이그레이션</li>
+                <li>주문 내역 및 리뷰 데이터 이전</li>
+            </ul>
+        </div>
+        
+        <div class="metric-card">
+            <h4>3단계: 디자인 및 기능 구현 (3-4주)</h4>
+            <ul>
+                <li>모바일 최적화 디자인 적용</li>
+                <li>페이지 로딩 속도 최적화</li>
+                <li>SEO 요소 개선 및 적용</li>
+            </ul>
+        </div>
+        
+        <div class="metric-card">
+            <h4>4단계: 테스트 및 런칭 (1-2주)</h4>
+            <ul>
+                <li>전체 기능 테스트 진행</li>
+                <li>실 사용자 대상 베타 테스트</li>
+                <li>최종 점검 및 정식 런칭</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+
+        # 기대 효과
+        st.markdown("#### 💫 기대 효과")
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.markdown("""
+            <div class="metric-card">
+                <h4>정량적 효과</h4>
+                <ul>
+                    <li>연간 운영비용 2.2억원 절감</li>
+                    <li>페이지 로딩 속도 31% 개선</li>
+                    <li>전환율 42% 향상</li>
+                    <li>모바일 최적화 32% 개선</li>
+                </ul>
+            </div>
+            """, unsafe_allow_html=True)
+            
+        with col2:
+            st.markdown("""
+            <div class="metric-card">
+                <h4>정성적 효과</h4>
+                <ul>
+                    <li>통합 관리 시스템으로 운영 효율성 증가</li>
+                    <li>안정적인 서버 운영으로 고객 신뢰도 향상</li>
+                    <li>글로벌 진출을 위한 기술적 기반 마련</li>
+                    <li>지속적인 기능 업데이트 및 보안 강화</li>
+                </ul>
+            </div>
+            """, unsafe_allow_html=True)
 
     except Exception as e:
         st.error(f"분석 중 오류가 발생했습니다: {str(e)}")
