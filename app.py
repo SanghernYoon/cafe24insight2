@@ -1375,19 +1375,13 @@ if submitted:
                 </div>
                 """, unsafe_allow_html=True)
 
-            # 푸터
+            # 푸터 섹션 추가
             st.markdown("""
-            <div style="text-align: center; margin-top: 50px; padding: 20px; background-color: #f8f9fa; border-radius: 10px;">
-                <p style="color: #666; font-size: 0.9em;">© 2024 Cafe24 Insight. All rights reserved.</p>
-                <div style="margin-top: 20px;">
-                    <p style="color: #666; font-size: 0.9em;">카페24 관련 문의</p>
-                    <p style="color: #666; font-size: 0.9em;">전화: 1588-3413</p>
-                    <p style="color: #666; font-size: 0.9em;">이메일: support@cafe24.com</p>
-                    <p style="color: #666; font-size: 0.9em;">주소: 서울특별시 강남구 테헤란로 20길 9, 8층</p>
-                </div>
-                <div style="margin-top: 20px;">
-                    <p style="color: #666; font-size: 0.9em;">카페24 공식 사이트: <a href="https://www.cafe24.com" target="_blank">www.cafe24.com</a></p>
-                </div>
+            <div class="footer">
+                <div class="footer-title">© 2024 쇼핑몰 셀프 분석 서비스</div>
+                <p>문의: support@example.com | 전화: 123-456-7890</p>
+                <p>주소: 서울특별시 강남구 테헤란로 123</p>
+                <p><a href="https://www.example.com" target="_blank">공식 웹사이트</a> | <a href="https://www.example.com/privacy" target="_blank">개인정보처리방침</a></p>
             </div>
             """, unsafe_allow_html=True)
 
