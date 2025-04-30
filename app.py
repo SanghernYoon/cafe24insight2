@@ -18,7 +18,7 @@ st.markdown("""
 <style>
     /* 전체 컨테이너 스타일 */
     .main {
-        max-width: 1040px;
+        max-width: 1200px;
         margin: 0 auto;
         padding: 2rem;
     }
@@ -27,10 +27,9 @@ st.markdown("""
     .header {
         text-align: center;
         margin-bottom: 3rem;
-        padding: 2rem 0;
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        padding: 2rem;
+        background: #f4f4f4;
         border-radius: 15px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     
     .header h1 {
@@ -62,8 +61,8 @@ st.markdown("""
     }
     
     .stTextInput > div > div > input:focus {
-        border-color: #3498db;
-        box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        border-color: #007bff;
+        box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
     }
     
     /* 버튼 스타일 */
@@ -73,14 +72,14 @@ st.markdown("""
         padding: 0.8rem;
         font-size: 1.1rem;
         font-weight: 600;
-        background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+        background: #007bff;
         color: white;
         border: none;
         transition: all 0.3s ease;
     }
     
     .stButton > button:hover {
-        background: linear-gradient(135deg, #2980b9 0%, #3498db 100%);
+        background: #0056b3;
         transform: translateY(-2px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
@@ -90,7 +89,7 @@ st.markdown("""
         background: white;
         padding: 1.5rem;
         border-radius: 15px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ccc;
         margin-bottom: 1rem;
         transition: all 0.3s ease;
     }
@@ -109,7 +108,7 @@ st.markdown("""
     .performance-metric {
         font-size: 2.5rem;
         font-weight: bold;
-        color: #3498db;
+        color: #007bff;
         margin-bottom: 0.5rem;
     }
     
@@ -119,7 +118,7 @@ st.markdown("""
         padding: 2rem;
         background: white;
         border-radius: 15px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ccc;
     }
     
     .section h3 {
@@ -152,16 +151,13 @@ st.markdown("""
     .footer {
         margin-top: 4rem;
         padding: 2rem;
-        background: #f8f9fa;
+        background: #f4f4f4;
         border-radius: 15px;
         text-align: center;
-        font-size: 0.9rem;
-        color: #666;
-        line-height: 1.6;
     }
     
     .footer a {
-        color: #3498db;
+        color: #007bff;
         text-decoration: none;
     }
     
@@ -262,7 +258,6 @@ st.markdown("""
         border-spacing: 0;
         margin: 20px 0;
         font-size: 14px;
-        table-layout: fixed;
     }
     .comparison-table th, .comparison-table td {
         padding: 15px;
@@ -272,7 +267,7 @@ st.markdown("""
         word-wrap: break-word;
     }
     .comparison-table th {
-        background-color: #f8f9fa;
+        background-color: #f4f4f4;
         font-weight: bold;
         position: sticky;
         top: 0;
@@ -323,8 +318,8 @@ st.markdown("""
 # 헤더 섹션
 st.markdown("""
 <div class="header">
-    <h1>카페24 쇼핑몰 인사이트</h1>
-    <p>운영 중인 쇼핑몰 주소를 입력하면, 사이트의 상태를 분석하고<br>Cafe24가 제공하는 맞춤형 개선 인사이트를 안내해드립니다.</p>
+    <h1>쇼핑몰 성능 분석 & 카페24 이전 가이드</h1>
+    <p>고도몰에서 운영 중인 쇼핑몰의 도메인을 입력하고, 분석 결과와 이전 혜택을 확인해보세요.</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -333,21 +328,34 @@ with st.form("analysis_form"):
     st.markdown("""
     <div class="stForm">
         <h3 style="color: #2c3e50; margin-bottom: 1.5rem;">분석할 웹사이트 정보를 입력하세요</h3>
+    </div>
     """, unsafe_allow_html=True)
     
     # 쇼핑몰 솔루션 선택
     solution = st.selectbox(
         "현재 사용 중인 쇼핑몰 솔루션",
-        ["선택해주세요", "고도몰", "메이크샵", "아임웹", "위사", "식스샵", "자체구축(SI)", "쇼피파이", "기타"]
+        [
+            "선택해주세요",
+            "고도몰",
+            "메이크샵 (준비중)",
+            "아임웹 (준비중)",
+            "위사 (준비중)",
+            "식스샵 (준비중)",
+            "자체구축(SI) (준비중)",
+            "쇼피파이 (준비중)",
+            "기타 (준비중)"
+        ]
     )
+    
+    if solution != "선택해주세요" and solution != "고도몰":
+        st.warning("현재는 고도몰만 분석이 가능합니다. 다른 솔루션은 준비 중입니다.")
+        solution = "선택해주세요"
     
     domain = st.text_input("브랜드 도메인", placeholder="예: yourdomain.cafe24.com")
     industry = st.selectbox(
         "업종",
         ["패션의류", "스포츠", "전자제품", "식품", "건기식", "굿즈", "기타"]
     )
-    
-    st.markdown("</div>", unsafe_allow_html=True)
     
     submitted = st.form_submit_button("분석 시작하기")
 
@@ -1010,6 +1018,23 @@ if submitted:
             </div>
             """, unsafe_allow_html=True)
 
+            # Google 프레젠테이션 임베드
+            st.markdown("""
+            <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-bottom: 20px;">
+                <iframe 
+                    src="https://docs.google.com/presentation/d/1dhfw9GzQin4tzZqfW_NSQitsFF_uUGAZcKAzDCCeuMk/embed" 
+                    frameborder="0" 
+                    width="100%" 
+                    height="100%" 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                    allowfullscreen="true" 
+                    mozallowfullscreen="true" 
+                    webkitallowfullscreen="true">
+                </iframe>
+            </div>
+            """, unsafe_allow_html=True)
+
+            # 기존 비교 테이블
             st.markdown("""
             <table class="comparison-table">
                 <tr>
@@ -1217,6 +1242,15 @@ if submitted:
             st.markdown("""
             <div style="text-align: center; margin-top: 50px; padding: 20px; background-color: #f8f9fa; border-radius: 10px;">
                 <p style="color: #666; font-size: 0.9em;">© 2024 Cafe24 Insight. All rights reserved.</p>
+                <div style="margin-top: 20px;">
+                    <p style="color: #666; font-size: 0.9em;">카페24 관련 문의</p>
+                    <p style="color: #666; font-size: 0.9em;">전화: 1588-3413</p>
+                    <p style="color: #666; font-size: 0.9em;">이메일: support@cafe24.com</p>
+                    <p style="color: #666; font-size: 0.9em;">주소: 서울특별시 강남구 테헤란로 20길 9, 8층</p>
+                </div>
+                <div style="margin-top: 20px;">
+                    <p style="color: #666; font-size: 0.9em;">카페24 공식 사이트: <a href="https://www.cafe24.com" target="_blank">www.cafe24.com</a></p>
+                </div>
             </div>
             """, unsafe_allow_html=True)
 
