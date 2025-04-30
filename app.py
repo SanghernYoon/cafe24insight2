@@ -5,12 +5,13 @@ import time
 import pandas as pd
 import base64
 import plotly.express as px
+import plotly.graph_objects as go
 
 # 페이지 설정
 st.set_page_config(
-    page_title="Cafe24 로딩 타임 체크",
+    page_title="쇼핑몰 셀프 분석 서비스",
     layout="wide",
-    initial_sidebar_state="collapsed"
+    initial_sidebar_state="expanded"
 )
 
 # CSS 스타일
@@ -312,14 +313,150 @@ st.markdown("""
             min-width: 200px;
         }
     }
+    
+    /* 이전 혜택 카드 스타일 */
+    .benefit-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1.5rem;
+        transition: transform 0.3s ease;
+    }
+    
+    .benefit-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .benefit-card h4 {
+        color: #2c3e50;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+    }
+    
+    .benefit-card ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    
+    .benefit-card li {
+        margin-bottom: 0.5rem;
+        padding-left: 1.5rem;
+        position: relative;
+    }
+    
+    .benefit-card li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #27ae60;
+    }
+    
+    /* 이전 프로세스 스타일 */
+    .process-steps {
+        display: flex;
+        justify-content: space-between;
+        margin: 2rem 0;
+    }
+    
+    .step {
+        flex: 1;
+        text-align: center;
+        padding: 1rem;
+        position: relative;
+    }
+    
+    .step:not(:last-child):after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 50%;
+        height: 2px;
+        background: #3498db;
+    }
+    
+    .step-number {
+        width: 40px;
+        height: 40px;
+        background: #3498db;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+        font-weight: bold;
+    }
+    
+    /* 지원 서비스 스타일 */
+    .support-services {
+        display: flex;
+        justify-content: space-between;
+        gap: 1.5rem;
+    }
+    
+    .service {
+        flex: 1;
+        background: white;
+        padding: 1.5rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .service h4 {
+        color: #2c3e50;
+        margin-bottom: 1rem;
+    }
+    
+    .service ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    
+    .service li {
+        margin-bottom: 0.5rem;
+        padding-left: 1.5rem;
+        position: relative;
+    }
+    
+    .service li:before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: #3498db;
+    }
+    
+    /* CTA 버튼 스타일 */
+    .cta-section {
+        text-align: center;
+        margin: 3rem 0;
+    }
+    
+    .cta-button {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: #3498db;
+        color: white;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+    
+    .cta-button:hover {
+        background: #2980b9;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
 </style>
 """, unsafe_allow_html=True)
 
 # 헤더 섹션
 st.markdown("""
 <div class="header">
-    <h1>쇼핑몰 성능 분석 & 카페24 이전 가이드</h1>
-    <p>고도몰에서 운영 중인 쇼핑몰의 도메인을 입력하고, 분석 결과와 이전 혜택을 확인해보세요.</p>
+    <h1>쇼핑몰 성능 분석 & 개선점 찾기</h1>
+    <p>현재 운영 중인 고도몰 쇼핑몰 URL을 입력하고, Cafe24로 전환 시 예상되는 성능 향상, 비용 절감, 기능 확장을 미리 확인해보세요.</p>
 </div>
 """, unsafe_allow_html=True)
 
