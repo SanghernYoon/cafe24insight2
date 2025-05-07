@@ -53,16 +53,30 @@ st.markdown("""
         border-radius: 15px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         margin-bottom: 2rem;
+        width: 392px;
+        margin-left: auto;
+        margin-right: auto;
     }
     
-    .stTextInput > div > div > input {
+    .stForm h3 {
+        color: #2c3e50;
+        margin-bottom: 1.5rem;
+        font-size: 18px !important;
+        text-align: center;
+    }
+    
+    /* 입력 필드 스타일 */
+    .stTextInput > div > div > input,
+    .stSelectbox > div > div {
+        width: 100% !important;
         border-radius: 10px;
         border: 2px solid #e0e0e0;
         padding: 0.8rem;
         font-size: 1rem;
     }
     
-    .stTextInput > div > div > input:focus {
+    .stTextInput > div > div > input:focus,
+    .stSelectbox > div > div:focus {
         border-color: #007bff;
         box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
     }
@@ -472,8 +486,9 @@ st.markdown("""
 # 입력 폼
 with st.form("analysis_form"):
     st.markdown("""
-    <div class="stForm">
-        <h3 style="color: #2c3e50; margin-bottom: 1.5rem; font-size: 1.2rem;">분석할 웹사이트 정보를 입력하세요.</h3>
+    <div style="text-align: center; margin-bottom: 1.5rem;">
+        <h3 style="color: #2c3e50; font-size: 18px;">분석할 웹사이트 정보를 입력하세요</h3>
+    </div>
     """, unsafe_allow_html=True)
     
     # 쇼핑몰 솔루션 선택
@@ -501,8 +516,6 @@ with st.form("analysis_form"):
         "업종",
         ["패션의류", "스포츠", "전자제품", "식품", "건기식", "뷰티", "굿즈", "기타"]
     )
-    
-    st.markdown("</div>", unsafe_allow_html=True)
     
     submitted = st.form_submit_button("분석 시작하기")
 
