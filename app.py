@@ -22,6 +22,7 @@ st.markdown("""
         max-width: 1200px;
         margin: 0 auto;
         padding: 2rem;
+        padding-bottom: 60px;
     }
     
     /* 헤더 스타일 */
@@ -150,33 +151,32 @@ st.markdown("""
     
     /* 푸터 스타일 */
     .footer {
-        margin-top: 4rem;
-        padding: 2rem;
-        background: #f4f4f4;
-        border-radius: 15px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: #f8f9fa;
+        padding: 1rem;
         text-align: center;
+        font-size: 0.9rem;
+        color: #666;
+        line-height: 1.6;
+        z-index: 1000;
+        border-top: 1px solid #e9ecef;
+    }
+    
+    .footer-content {
+        max-width: 1040px;
+        margin: 0 auto;
     }
     
     .footer a {
-        color: #007bff;
+        color: #3498db;
         text-decoration: none;
     }
     
     .footer a:hover {
         text-decoration: underline;
-    }
-    
-    .footer-title {
-        font-weight: bold;
-        color: #2c3e50;
-        margin-bottom: 1rem;
-    }
-    
-    @media (max-width: 1040px) {
-        .footer {
-            padding: 1.5rem;
-            font-size: 0.8rem;
-        }
     }
     
     /* 툴팁 스타일 */
@@ -457,6 +457,15 @@ st.markdown("""
 <div class="header">
     <h1>쇼핑몰 성능 분석 & 개선점 찾기</h1>
     <p>현재 운영 중인 고도몰 쇼핑몰 URL을 입력하고, Cafe24로 전환 시 예상되는 성능 향상, 비용 절감, 기능 확장을 미리 확인해보세요.</p>
+</div>
+""", unsafe_allow_html=True)
+
+# 푸터 추가 (조건문 밖으로 이동)
+st.markdown("""
+<div class="footer">
+    <div class="footer-content">
+        Copyright ⓒ Cafe24 Corp. All Rights Reserved.
+    </div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -1374,16 +1383,6 @@ if submitted:
                     </ul>
                 </div>
                 """, unsafe_allow_html=True)
-
-            # 푸터 섹션 추가
-            st.markdown("""
-            <div class="footer">
-                <div class="footer-title">© 2024 쇼핑몰 셀프 분석 서비스</div>
-                <p>문의: support@example.com | 전화: 123-456-7890</p>
-                <p>주소: 서울특별시 강남구 테헤란로 123</p>
-                <p><a href="https://www.example.com" target="_blank">공식 웹사이트</a> | <a href="https://www.example.com/privacy" target="_blank">개인정보처리방침</a></p>
-            </div>
-            """, unsafe_allow_html=True)
 
         except Exception as e:
             st.error(f"분석 중 오류가 발생했습니다: {str(e)}")
