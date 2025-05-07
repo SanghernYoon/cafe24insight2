@@ -83,21 +83,6 @@ st.markdown("""
         box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
     }
     
-    /* 드롭다운 스타일 */
-    .stSelectbox > div > div > div {
-        color: #2c3e50 !important;
-        font-size: 1rem !important;
-        padding: 0.5rem !important;
-    }
-    
-    .stSelectbox > div > div > div[data-baseweb="select"] {
-        background-color: white !important;
-    }
-    
-    .stSelectbox > div > div > div[data-baseweb="select"] > div {
-        color: #2c3e50 !important;
-    }
-    
     /* 드롭다운 옵션 스타일 */
     .stSelectbox > div > div > div[role="listbox"] {
         background-color: white !important;
