@@ -56,6 +56,8 @@ st.markdown("""
         width: 392px;
         margin-left: auto;
         margin-right: auto;
+        position: relative;
+        z-index: 1;
     }
     
     .stForm h3 {
@@ -79,6 +81,65 @@ st.markdown("""
     .stSelectbox > div > div:focus {
         border-color: #007bff;
         box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+    }
+    
+    /* 드롭다운 스타일 */
+    .stSelectbox > div > div > div {
+        color: #2c3e50 !important;
+        font-size: 1rem !important;
+        padding: 0.5rem !important;
+    }
+    
+    .stSelectbox > div > div > div[data-baseweb="select"] {
+        background-color: white !important;
+    }
+    
+    .stSelectbox > div > div > div[data-baseweb="select"] > div {
+        color: #2c3e50 !important;
+    }
+    
+    /* 드롭다운 옵션 스타일 */
+    .stSelectbox > div > div > div[role="listbox"] {
+        background-color: white !important;
+        border: 1px solid #e0e0e0 !important;
+        border-radius: 10px !important;
+        margin-top: 5px !important;
+        position: absolute !important;
+        width: 100% !important;
+        z-index: 999 !important;
+    }
+    
+    .stSelectbox > div > div > div[role="listbox"] > div {
+        color: #2c3e50 !important;
+        padding: 0.8rem !important;
+    }
+    
+    .stSelectbox > div > div > div[role="listbox"] > div:hover {
+        background-color: #f8f9fa !important;
+    }
+    
+    .stSelectbox > div > div > div[role="listbox"] > div[aria-selected="true"] {
+        background-color: #e3f2fd !important;
+        color: #007bff !important;
+    }
+    
+    /* 선택된 항목 스타일 */
+    .stSelectbox > div > div > div[data-baseweb="select"] > div[data-baseweb="select-value"] {
+        color: #000000 !important;
+        font-weight: 600 !important;
+        background-color: #f8f9fa !important;
+        padding: 0.5rem !important;
+        border-radius: 5px !important;
+    }
+    
+    .stSelectbox > div > div > div[data-baseweb="select"] > div[data-baseweb="select-value"] > div {
+        color: #000000 !important;
+        font-weight: 600 !important;
+    }
+    
+    /* 드롭다운 화살표 스타일 */
+    .stSelectbox > div > div > div[data-baseweb="select"] > div[data-baseweb="select-arrow"] {
+        color: #2c3e50 !important;
     }
     
     /* 버튼 스타일 */
