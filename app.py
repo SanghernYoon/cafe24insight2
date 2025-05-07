@@ -455,8 +455,8 @@ st.markdown("""
 # 헤더 섹션
 st.markdown("""
 <div class="header">
-    <h1>쇼핑몰 성능 분석 & 개선점 찾기</h1>
-    <p>현재 운영 중인 고도몰 쇼핑몰 URL을 입력하고, Cafe24로 전환 시 예상되는 성능 향상, 비용 절감, 기능 확장을 미리 확인해보세요.</p>
+    <h1>My 쇼핑몰 성능 분석하기</h1>
+    <p>현재 운영 중인 쇼핑몰 URL을 입력하고, Cafe24로 전환 시 예상되는 성능 향상, 비용 절감, 기능 확장을 미리 확인해보세요.</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -473,8 +473,7 @@ st.markdown("""
 with st.form("analysis_form"):
     st.markdown("""
     <div class="stForm">
-        <h3 style="color: #2c3e50; margin-bottom: 1.5rem;">분석할 웹사이트 정보를 입력하세요</h3>
-    </div>
+        <h3 style="color: #2c3e50; margin-bottom: 1.5rem; font-size: 1.2rem;">분석할 웹사이트 정보를 입력하세요.</h3>
     """, unsafe_allow_html=True)
     
     # 쇼핑몰 솔루션 선택
@@ -497,11 +496,13 @@ with st.form("analysis_form"):
         st.warning("현재는 고도몰만 분석이 가능합니다. 다른 솔루션은 준비 중입니다.")
         solution = "선택해주세요"
     
-    domain = st.text_input("브랜드 도메인", placeholder="예: yourdomain.cafe24.com")
+    domain = st.text_input("브랜드 도메인", placeholder="예시) yourdomain.com")
     industry = st.selectbox(
         "업종",
-        ["패션의류", "스포츠", "전자제품", "식품", "건기식", "굿즈", "기타"]
+        ["패션의류", "스포츠", "전자제품", "식품", "건기식", "뷰티", "굿즈", "기타"]
     )
+    
+    st.markdown("</div>", unsafe_allow_html=True)
     
     submitted = st.form_submit_button("분석 시작하기")
 
