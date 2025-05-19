@@ -1477,15 +1477,3 @@ if submitted:
 
         except Exception as e:
             st.error(f"분석 중 오류가 발생했습니다: {str(e)}")
-
-# 푸터 위에 고도몰 네임서버 안내문 추가
-st.markdown("""
-<div style='background:#f8f9fa; border-radius:8px; padding:16px; margin:32px 0 0 0; text-align:center;'>
-    <b>도메인을 고도몰 쇼핑몰에 연결하기 위해서는 아래와 같이 네임 서버가 설정되어 있어야 합니다.</b><br><br>
-    <table style='margin:0 auto;'>
-        <tr><th>구분</th><th>URL</th><th>IP</th></tr>
-        <tr><td>1차</td><td>sns1.nsgodo.com</td><td>180.210.127.111</td></tr>
-        <tr><td>2차</td><td>sns2.nsgodo.com</td><td>211.233.51.3</td></tr>
-    </table>
-</div>
-""", unsafe_allow_html=True)
